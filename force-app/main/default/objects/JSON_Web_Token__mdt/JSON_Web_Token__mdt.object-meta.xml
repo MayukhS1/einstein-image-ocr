@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>JSON Web Token</label>
+    <pluralLabel>JSON Web Tokens</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>
