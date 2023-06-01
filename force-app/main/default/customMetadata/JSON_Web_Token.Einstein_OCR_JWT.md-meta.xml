@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Einstein_OCR_JWT</label>
+    <protected>false</protected>
+    <values>
+        <field>Algorithm__c</field>
+        <value xsi:type="xsd:string">RS256</value>
+    </values>
+    <values>
+        <field>Audiences__c</field>
+        <value xsi:type="xsd:string">https://api.einstein.ai/v2/oauth2/token</value>
+    </values>
+    <values>
+        <field>Endpoint__c</field>
+        <value xsi:type="xsd:string">https://api.einstein.ai/v2/oauth2/token</value>
+    </values>
+    <values>
+        <field>Issuer__c</field>
+        <value xsi:type="xsd:string">developer.force.com</value>
+    </values>
+    <values>
+        <field>RSA_Key__c</field>
+        <value xsi:type="xsd:string">MIIEowIBAAKCAQEAjy5CvBdHeuedc3/mXVXvTH0KgdBWvHJZC9BFxQBNd3+xLRLR
+QlTOIoheK3HIsr/hFeMM+Ij5cK4hB7ilCukOcK80HKsdrQa2wp83XWQLh4wkFJHM
+/TZAnpbs9JUSiRGt2uTtDeHYLciSfWvF4NOScZ6ceigPk252+q7+DcaCayaij2wg
+NORcJkOv2uN7NRsSczk0GU0EJ4VwjiHDuqgDX8QjKgIeCVXnJOXfZUVDlPPKWr9j
+OgAHC1X6Y46h+SSweUcbwD7d70bzrqJU0fGjvStm669M0F4ax7S9PM6uNlYQolvS
+H9nZANcgAg8JMQ+uCoKjb2qB/MsXl2y5du335wIDAQABAoIBAE8GHkkHpCj+apVT
+swYypseVf9YT8btCdUki408OkrLwpA4Xg61Tdw3yK99Yhoe5hXZ6AS+vEdUSFiLX
+0yeJZ7Hj0SQ9gTx9JyOVko4V6JMgUs2Thwr+BX5CGHgJStiiDE1y6i8uRg1G1Ssp
+72Xd/8Z73ytArxAU+M/1Az0BIfwW27B0WoTYgER3KYLSQK7Rhsjbj7gvZuboZo66
+jsQoJzw5jkLGzpyObbgJXaaTJoYfg+QtmXb+sRajg2l9cin7H7AcRcfwjsaXGiMO
+Pywj+tFoQbZi/JqVSQEHO5yuZze8+QhOg0R48HpvOWBsa1RktjMo9ABeAOIDlmRh
+pNLAniECgYEA0Cfx0pZN+uRq3IaRoa5PjJ9VBpHpq2phwo3CmZdQeZOo4VRi2DFB
+33NNPGpkbnc9lddXdMWhzOO9LRZdWErQbSOaZrDcz94bDcWghsWFoBWYFWAEMh9b
+1CgKz59L3Phzh9bEhG58Tqi2oTlPxTZNaIFTBaCxt6qExsgBzPpPOpECgYEAsBce
+nU22d+05taAQkgd5/FvcljFPjN6UESYty6txVTy1+1yMCJCGReMwCJPsYdtuRPas
+c4HZfso0gaZyowKT3Rze9x6yQlVUHxTAFOfYKJ4a8ZWZqIcGpxZzZD3jCy1WHIdl
+QSUAyks4Pdf1RpBrU9ckvLhAMfT9b5OI5UA0FvcCgYEAo5NQUIm3G/tWEphZZzHg
+54PqQDB37TG7QzU9gI9NOU0VQIWc64HB30PvpROCeuCPb+n6mxQXszggWIcjsZeR
+NMLuudYwn9VNc0QjguVDvepaSinbAjxsYEtbO49WAX7o4w2d/ugIHZQteILeMf8b
+U42VXW3LWqbQkpln+NmXW1ECgYBtEOTVaZzrCvQDmvCoghj8RamLHV+4UORE+vDC
+hZ3cvY258siJRXrlLqJBrd1rfw39iQunP3YHIhcDdqTqcl5DRe6UAV9H1rITzjZq
+vG8WOVdW6uIRkBB+zVkLbYmDEsGTSgldIB4tLgnXxDsXSbwwYcFPYo/gYW3X/fl8
+hRe+YQKBgA4k1AWNfXXlADPMY13tNQ9GOKJBetwbvC3DFrADN3G5f/orxduC4DUM
+5rY5VJZTwieA+PaaVD1SpQkA3ArsSh4oj9RQJ0hXLjkJFJJoGu9yBqaWSYzW21Xn
+8RCVNolLRWNPu6BDiHPKAF61le4164TjlZozgqS2tMVw/Z/9/taE</value>
+    </values>
+    <values>
+        <field>Subscriber__c</field>
+        <value xsi:type="xsd:string">mayukhsasmal101@gmail.com</value>
+    </values>
+    <values>
+        <field>Token_Duration__c</field>
+        <value xsi:type="xsd:double">3600.0</value>
+    </values>
+</CustomMetadata>
