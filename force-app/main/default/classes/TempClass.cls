@@ -4,6 +4,11 @@ public class TempClass {
 		System.debug(token);
         return token;
     }
+    public static String getBlobValue(){
+        ContentVersion cv = [SELECT Id, VersionData FROM ContentVersion WHERE Title = '115_business_card_cropped' LIMIT 1];
+        String base64Data = EncodingUtil.base64Encode(cv.VersionData);
+        return base64Data;
+    }
     public static void getBusinessCardText() {
         String access_token = getAccessToken();
         HttpRequest req = new HttpRequest();
@@ -16,7 +21,8 @@ public class TempClass {
         string form64 = '';
         
         form64 += HttpFormBuilder.WriteBoundary();
-        form64 += HttpFormBuilder.WriteBodyParameter('sampleLocation', 'https://developer.salesforce.com/1/content-asset/immutable/s/16854879250000000/salesforcedocseinstein-vision-language/content/media/business_card_original.jpeg');
+        form64 += HttpFormBuilder.WriteBodyParameter('sampleBase64Content', getBlobValue());
+        //form64 += HttpFormBuilder.WriteBodyParameter('sampleLocation', 'https://developer.salesforce.com/1/content-asset/immutable/s/16854879250000000/salesforcedocseinstein-vision-language/content/media/business_card_original.jpeg');
         form64 += HttpFormBuilder.WriteBoundary();
         form64 += HttpFormBuilder.WriteBodyParameter('modelId', 'OCRModel');
         form64 += HttpFormBuilder.WriteBoundary();
@@ -37,14 +43,19 @@ public class TempClass {
         resp = res.getBody();
         System.debug('Status Code: '+res.getStatusCode());
 
-        if(res.getStatusCode() == 200) {
-            EinteinParser ocr = EinteinParser.parse(resp);  
-            for( EinteinParser.Probabilities prob : ocr.probabilities) {
-                system.debug('========Label==== '+prob.label);
-                system.debug('========BoundingBox==== '+prob.boundingBox);
-                system.debug('========probability==== '+prob.probability);
-            }        
-        }
+        Integration_Tracker__c tracker = new Integration_Tracker__c();
+        tracker.service__c = 'OCR';
+        //tracker.request__c = req.getBody();
+        tracker.response__c = resp;
+        insert tracker;
+        // if(res.getStatusCode() == 200) {
+        //     EinteinParser ocr = EinteinParser.parse(resp);  
+        //     for( EinteinParser.Probabilities prob : ocr.probabilities) {
+        //         system.debug('========Label==== '+prob.label);
+        //         system.debug('========BoundingBox==== '+prob.boundingBox);
+        //         system.debug('========probability==== '+prob.probability);
+        //     }        
+        // }
         
     }
 }
