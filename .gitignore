@@ -49,7 +49,3 @@ $RECYCLE.BIN/
 
 # Salesforce SOQL
 **/soql/
-
-#temp
-*.cls-meta.xml
-*.cls
