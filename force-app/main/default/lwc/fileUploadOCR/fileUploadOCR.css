@@ -1,0 +1,44 @@
+.dummy{
+	color : black;
+}
+.Row {
+    display: table;
+    width: 100%; 
+    table-layout: fixed; 
+    border-spacing: 10px; 
+}
+.Column {
+    display: table-cell;
+	border-radius: 10px;
+	border: 1px solid grey;
+	box-shadow: 3px 3px 1px #888888;
+	padding: 20px;
+	width: 350px !important;
+	height: 180px;
+    background-color: white; 
+}
+.Column2 {
+    display: table-cell;
+	border-radius: 10px;
+	border: 1px solid grey;
+	box-shadow: 3px 3px 1px #888888;
+	padding: 20px;
+	width: 400px !important;
+	height: 180px;
+    background-color: white; 
+}
+.image-parent{
+	display: block;
+	margin: auto;
+}
+
+.image-child{
+	text-align: center;
+}
+
+.image-bottom-corner{
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	z-index: 100;
+}

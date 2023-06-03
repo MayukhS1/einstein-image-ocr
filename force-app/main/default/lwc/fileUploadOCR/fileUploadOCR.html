@@ -1,0 +1,65 @@
+<template>
+	<lightning-card>
+		<div class="slds-grid slds-wrap">
+			<!-- image upload area -->
+			<div class="slds-col slds-size_4-of-12 slds-p-horizontal_small">
+				<div>
+					<span class="slds-grid">
+						<p class="slds-text-heading_medium">Upload Image Here</p>
+					</span>
+					<br>
+					<span class="slds-grid">
+						<lightning-file-upload label="" name="fileUploader" accept={acceptedFormats}
+							record-id={myRecordId} onuploadfinished={handleUploadFinished} multiple class="slds-col">
+						</lightning-file-upload>
+					</span>
+					<div class="slds-grid slds-m-top_small">
+						<div class="slds-col slds-button-group" role="group">
+							<lightning-button variant="brand" label="Scan image" title="Initiate OCR"
+								onclick={handleScanImageClick} class="slds-m-left_x-small slds-button_brand"></lightning-button>
+							<lightning-button variant="brand" label="Create New Record" title="Search for Records"
+								onclick={handleSearch} class="slds-m-left_x-small slds-button_brand"></lightning-button>
+							<lightning-button variant="brand" label="Search New Record" title="Create New Record"
+								onclick={handleCreate} class="slds-m-left_x-small slds-button_brand"></lightning-button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- image card -->
+			<div class="slds-col slds-size_4-of-12 slds-p-horizontal_small">
+				<div class="slds-grid slds-wrap">
+					<div class="slds-col">
+						<p class="slds-text-heading_medium">Uploaded Image will be shown here</p>
+					</div>
+					<div class="slds-col slds-m-vertical_x-small">
+						<div class='Column'>
+							<div class="image-parent">
+								<div class="image-child">
+									<img src={firstColumnImageUrl} alt="url did't work">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- ocr result card -->
+			<div class="slds-col slds-size_4-of-12 slds-p-horizontal_small">
+				<div class="slds-grid slds-wrap">
+					<div class="slds-col">
+						<p class="slds-text-heading_medium">OCR Result will be shown here</p>
+					</div>
+					<div class="slds-col slds-m-vertical_x-small">
+						<div class='Column2'>
+							<div class="image-parent">
+								<div class="image-bottom-corner">
+									<img src={einsteinImageUrl} alt="url did't work">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</lightning-card>
+
+</template>
