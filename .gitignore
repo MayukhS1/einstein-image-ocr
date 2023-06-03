@@ -49,3 +49,6 @@ $RECYCLE.BIN/
 
 # Salesforce SOQL
 **/soql/
+
+#static resources
+**/staticresources/
