@@ -50,10 +50,18 @@
 					</div>
 					<div class="slds-col slds-m-vertical_x-small">
 						<div class='Column2'>
-							<div class="image-parent">
+							<div class="slds-text-body_regular" lwc:if={showCardDetails}>
+								<lightning-formatted-text value="Person : Wilson Ella" ></lightning-formatted-text></br>
+								<lightning-formatted-text value="phone : 98998399,849393939" ></lightning-formatted-text></br>
+								<lightning-formatted-text value="email : wilson_ella@fedorabank.com" ></lightning-formatted-text></br>
+								<lightning-formatted-text value="Website : www.fedora.com" ></lightning-formatted-text></br>
+								<lightning-formatted-text value="ID : dfsd322dfd" ></lightning-formatted-text></br>
+								<lightning-formatted-text value="image number : 3432323" ></lightning-formatted-text></br>
+								<div class="image-parent">
 								<!-- OCR Result Component will be here -->
-								<div class="image-bottom-corner">
-									<img src={einsteinImageUrl} alt="url did't work">
+									<div class="image-bottom-corner">
+										<img src={einsteinImageUrl} alt="url did't work">
+									</div>
 								</div>
 							</div>
 						</div>

@@ -1,50 +1,21 @@
 import { LightningElement } from 'lwc';
+import generateData from './generateData';
+import images from '@salesforce/resourceUrl/images';
 
 export default class ShowData extends LightningElement {
-		lstAccounts = [
-        {
-            Id : '101',
-            Name : 'Cristiano Ronaldo',
-						Company : 'TCS',
-						Title : 'footballer',
-						Email : 'cr@gmail.com'
-        },
-        {
-            Id : '102',
-            Name : 'Lionel Messi',
-						Company : 'infy',
-						Title : 'footballer',
-						Email : 'LM@gmail.com'
-        },
-        {
-            Id : '103',
-            Name : 'Sachin Tendulkar',
-						Company : 'wipro',
-						Title : 'cricket',
-						Email : 'sT@gmail.com'
-        }
+    columns = [
+        { label: 'Name', fieldName: 'Name' },
+        { label: 'Company', fieldName: 'Company'},
+        { label: 'Title', fieldName: 'Title' },
+        { label: 'Email', fieldName: 'Email'},
     ];
-    constructor(){
-        super();
-        // 1. Basic For Loop
-        for(let i=0; i<this.lstAccounts.length; i++){
-            console.log(this.lstAccounts[i].Name);
-        }
-        // 2. forEach Method
-        this.lstAccounts.forEach(function(acc){
-            console.log(acc.Name);
-        });
-        // 3. forEach Array Function
-        this.lstAccounts.forEach(acc =>{
-            console.log(acc.Name);
-        });
-        // 4. For...IN loop
-        for(let acc in this.lstAccounts){
-            console.log(this.lstAccounts[acc].Name);
-        }
-        // 5. For...Of loop
-        for(let acc of this.lstAccounts){
-            console.log(acc.Name);
-        }
+    showDetails = false;
+    firstColumnImageUrl = images + '/images/illustrations/empty-state-events.svg';
+    data = [];
+    columns = this.columns;
+
+    connectedCallback() {
+        const data = generateData({ amountOfRecords: 5 });
+        this.data = data;
     }
 }

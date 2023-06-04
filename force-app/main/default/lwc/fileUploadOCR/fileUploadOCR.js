@@ -14,6 +14,7 @@ export default class FileUploadExample extends LightningElement {
     //image for OCR
     uploadedImageBase64;
     ocrResult='';
+    showCardDetails = true;
 
     get acceptedFormats() {
         return ['.jpg', '.png', '.jpeg'];
@@ -50,6 +51,7 @@ export default class FileUploadExample extends LightningElement {
     handleScanImageClick(event) {
         if (this.uploadedImageBase64) {
             this.firstColumnImageUrl = 'data:image/png;base64, '+this.uploadedImageBase64;
+            /* temporary comment out
             initiateOCRScan({base60Image: this.uploadedImageBase64})
             .then(result => {
                 console.log('result==>'+result);
@@ -58,6 +60,7 @@ export default class FileUploadExample extends LightningElement {
             .catch(error => {
                 console.log('error==>'+JSON.stringify(error));
             });
+            */
         }
     }
 }

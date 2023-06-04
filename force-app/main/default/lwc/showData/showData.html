@@ -1,5 +1,5 @@
 <template>
-<article class="slds-card">
+<article class="slds-card" lwc:if={showDetails}>
   <div class="slds-card__header slds-grid">
     <header class="slds-media slds-media_center slds-has-flexi-truncate">
       <div class="slds-media__figure">
@@ -20,36 +20,7 @@
     </header>
   </div>
   <div class="slds-card__body">
-    <table class="slds-table slds-table_cell-buffer slds-no-row-hover slds-table_bordered slds-table_fixed-layout" role="grid" aria-label="Example table in a Card">
-      <thead>
-        <tr class="slds-line-height_reset">
-          <th class="" scope="col">
-            <div class="slds-truncate" title="Name">Name</div>
-          </th>
-          <th class="" scope="col">
-            <div class="slds-truncate" title="Company">Company</div>
-          </th>
-          <th class="" scope="col">
-            <div class="slds-truncate" title="Title">Title</div>
-          </th>
-          <th class="" scope="col">
-            <div class="slds-truncate" title="Email">Email</div>
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="slds-hint-parent">
-						<template for:each={lstAccounts} for:item="acc">
-                <p key={acc.Id} style="display:inline">
-                    <lightning-badge class="slds-badge_lightest" label={acc.Name}></lightning-badge>
-										<lightning-badge class="slds-badge_lightest" label={acc.Company}></lightning-badge>
-										<lightning-badge class="slds-badge_lightest" label={acc.Title}></lightning-badge>
-										<lightning-badge class="slds-badge_lightest" label={acc.Email}></lightning-badge><br>
-                </p>
-            </template>
-        </tr>
-      </tbody>
-    </table>
+    <lightning-datatable key-field="id" data={data} columns={columns}></lightning-datatable>
   </div>
   <div class="slds-card__header slds-grid">
     <header class="slds-media slds-media_center slds-has-flexi-truncate">
@@ -71,42 +42,17 @@
     </header>
   </div>
   <div class="slds-card__body">
-    <table class="slds-table slds-table_cell-buffer slds-no-row-hover slds-table_bordered slds-table_fixed-layout" role="grid" aria-label="Example table in a Card">
-      <thead>
-        <tr class="slds-line-height_reset">
-          <th class="" scope="col">
-            <div class="slds-truncate" title="Name">Name</div>
-          </th>
-          <th class="" scope="col">
-            <div class="slds-truncate" title="Company">Company</div>
-          </th>
-          <th class="" scope="col">
-            <div class="slds-truncate" title="Title">Title</div>
-          </th>
-          <th class="" scope="col">
-            <div class="slds-truncate" title="Email">Email</div>
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="slds-hint-parent">
-          <th scope="row">
-            <div class="slds-truncate" title="Amy Choi">
-              <a href="#" tabindex="-1">Amy Choi</a>
-            </div>
-          </th>
-          <td role="gridcell">
-            <div class="slds-truncate" title="Company One">Company One</div>
-          </td>
-          <td role="gridcell">
-            <div class="slds-truncate" title="Director of Operations">Director of Operations</div>
-          </td>
-          <td role="gridcell">
-            <div class="slds-truncate" title="adam@company.com">adam@company.com</div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <lightning-datatable key-field="id" data={data} columns={columns}></lightning-datatable>
   </div>
 </article>
+<lightning-card lwc:else>
+  <br></br>
+  <div class="slds-text-longform">
+    <h1 class="slds-text-heading_large slds-text-align_center">Welcome to Visionary</h1>
+    <h2 class="slds-text-heading_medium slds-text-align_center">An OCR Based Searching & Object Creation Tool For Salesforce</h2>
+    <div class="image-child">
+			<img src={firstColumnImageUrl} alt="url did't work" style="width: 600px; height: 400px;">
+		</div> 
+  </div>
+</lightning-card>
 </template>
