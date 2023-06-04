@@ -37,6 +37,7 @@ public class OCRUtility {
         HttpResponse res = h.send(req);
         resp = res.getBody();
         System.debug('Status Code: '+res.getStatusCode());
+        logIntegration(resp);
         return resp;
     }
 

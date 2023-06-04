@@ -9,12 +9,12 @@ public with sharing class FileUploadController {
     }
 
     @AuraEnabled
-    public static EinsteinOCRPredictionResponseWrapper initiateOCRScan(String base60Image){
+    public static String initiateOCRScan(String base60Image){
         if(String.isBlank(base60Image)){
             throw new Custom_FileUploadException('base60Image content is missing');
         }
         String reponse = OCRUtility.initiateOCRScan(base60Image);
-        return OCRUtility.parseResponse(reponse);
+        return reponse;
     }
 
     //custom exception class to throw error

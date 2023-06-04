@@ -1,6 +1,7 @@
 import { LightningElement, api } from 'lwc';
 import images from '@salesforce/resourceUrl/images';
 import getImageBase60 from '@salesforce/apex/FileUploadController.getImageBase60';
+import initiateOCRScan from '@salesforce/apex/FileUploadController.initiateOCRScan';
 
 export default class FileUploadExample extends LightningElement {
     @api
@@ -12,6 +13,7 @@ export default class FileUploadExample extends LightningElement {
 
     //image for OCR
     uploadedImageBase64;
+    ocrResult='';
 
     get acceptedFormats() {
         return ['.jpg', '.png', '.jpeg'];
@@ -48,6 +50,14 @@ export default class FileUploadExample extends LightningElement {
     handleScanImageClick(event) {
         if (this.uploadedImageBase64) {
             this.firstColumnImageUrl = 'data:image/png;base64, '+this.uploadedImageBase64;
+            initiateOCRScan({base60Image: this.uploadedImageBase64})
+            .then(result => {
+                console.log('result==>'+result);
+                this.ocrResult = result;
+            })
+            .catch(error => {
+                console.log('error==>'+JSON.stringify(error));
+            });
         }
     }
 }
