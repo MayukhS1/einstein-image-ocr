@@ -1,0 +1,5 @@
+.scrollableContent {
+    height: 10em;
+    margin: 0em;
+    overflow-y: auto;
+ }

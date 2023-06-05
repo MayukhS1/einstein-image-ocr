@@ -1,0 +1,23 @@
+<template>
+    <div class="slds-text-longform scrollableContent">
+        <!-- lwc iteration -->
+        <template lwc:if={name}>
+            <p>Name: {name}</p>
+        </template>
+        <template lwc:if={phone}>
+            <p>Phone: {phone}</p>
+        </template>
+        <template lwc:if={email}>
+            <p>Email: {email}</p>
+        </template>
+        <template lwc:if={company}>
+            <p>Company: {company}</p>
+        </template>
+        <template lwc:if={other}>
+            <p>Others:</p>
+            <template for:each={other} for:item="item">
+                <p key={item}>{item}</p>
+            </template>
+        </template>
+    </div>
+</template>
