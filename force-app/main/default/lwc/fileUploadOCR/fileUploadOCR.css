@@ -10,22 +10,23 @@
 .Column {
     display: table-cell;
 	border-radius: 10px;
-	border: 1px solid grey;
-	box-shadow: 3px 3px 1px #888888;
+	border: 1px solid #bcbcbc;
+	box-shadow: 3px 3px 3px #bcbcbc;
 	padding: 20px;
 	width: 350px !important;
-	height: 180px;
-	max-height : 180px;
+	height: 15em !important;
+	max-height : 15em !important;
     background-color: white; 
 }
 .Column2 {
     display: table-cell;
 	border-radius: 10px;
-	border: 1px solid grey;
-	box-shadow: 3px 3px 1px #888888;
+	border: 1px solid #bcbcbc;
+	box-shadow: 3px 3px 3px #bcbcbc;
 	padding: 20px;
 	width: 350px !important;
-	height: 180px;
+	height: 15em !important;
+	max-height : 15em !important;
 	overflow-y: auto;
     background-color: white; 
 }
@@ -36,12 +37,10 @@
 
 .image-child{
 	text-align: center;
-	display: flex;
 }
 
 .image-bottom-corner{
 	text-align: center;
 	padding-left: 290px;
 	z-index: auto;
-	display: flex;
 }

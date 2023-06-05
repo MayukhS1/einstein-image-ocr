@@ -16,6 +16,15 @@ export default class FileUploadExample extends LightningElement {
     ocrResult='';
     showCardDetails = true;
 
+    //scanned_result
+    scannedResult = {
+        "name": ["John Doe"],
+        "phone": ["1234567890","0987654321"],
+        "email": ["test@test.com"],
+        "company": ["Salesforce.com, Inc."],
+        "other": ["San Francisco, CA 94105","United States of America","https://www.salesforce.com"]
+    };
+
     get acceptedFormats() {
         return ['.jpg', '.png', '.jpeg'];
     }
