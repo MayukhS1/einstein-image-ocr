@@ -40,7 +40,16 @@
 }
 
 .image-bottom-corner{
-	text-align: center;
-	padding-left: 290px;
+	text-align: right;
 	z-index: auto;
+	margin-bottom: 0;
+}
+
+.img-fixed-size{
+	width: 300px;
+	height: 12em;
+}
+
+.einstein-logo{
+	width: 5em;
 }

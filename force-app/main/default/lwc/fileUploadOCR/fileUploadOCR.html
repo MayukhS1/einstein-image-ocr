@@ -36,7 +36,7 @@
 						<div class='Column'>
 							<div class="image-parent">
 								<div class="image-child">
-									<img src={firstColumnImageUrl} alt="url did't work">
+									<img src={firstColumnImageUrl} alt="url did't work" class="img-fixed-size">
 								</div>
 							</div>
 						</div>
@@ -54,10 +54,10 @@
 							<div class="slds-text-body_regular" lwc:if={showCardDetails}>
 								<c-scanned-text-data scannedresult={scannedResult}></c-scanned-text-data>
 							</div>
-							<div class="image-parent">
+							<div class="image-parent" lwc:else>
 								<!-- OCR Result Component will be here -->
 								<div class="image-bottom-corner">
-									<img src={einsteinImageUrl} alt="url did't work">
+									<img src={einsteinImageUrl} alt="url did't work" class="einstein-logo">
 								</div>
 							</div>
 						</div>

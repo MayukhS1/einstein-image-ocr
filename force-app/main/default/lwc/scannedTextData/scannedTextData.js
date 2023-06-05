@@ -10,20 +10,20 @@ export default class ScannedTextData extends LightningElement {
     other;
     connectedCallback() {
         console.log('scannedresult==>'+JSON.stringify(this.scannedresult));
-        if(this.scannedresult.hasOwnProperty('name') ||this.scannedresult.hasOwnProperty('person') ){
-            this.name = this.scannedresult.name.join(', ');
+        if(this.scannedresult.hasOwnProperty('PERSON') ){
+            this.name = this.scannedresult.PERSON.join(', ');
         }
-        if(this.scannedresult.hasOwnProperty('phone')){
-            this.phone = this.scannedresult.phone.join(', ');
+        if(this.scannedresult.hasOwnProperty('PHONE')){
+            this.phone = this.scannedresult.PHONE.join(', ');
         }
-        if(this.scannedresult.hasOwnProperty('email')){
-            this.email = this.scannedresult.email.join(', ');
+        if(this.scannedresult.hasOwnProperty('EMAIL')){
+            this.email = this.scannedresult.EMAIL.join(', ');
         }
-        if(this.scannedresult.hasOwnProperty('company')){
-            this.company = this.scannedresult.company.join(', ');
+        if(this.scannedresult.hasOwnProperty('ORG')){
+            this.company = this.scannedresult.ORG.join(', ');
         }
-        if(this.scannedresult.hasOwnProperty('other')){
-            this.other = [...this.scannedresult.other];
+        if(this.scannedresult.hasOwnProperty('OTHER')){
+            this.other = [...this.scannedresult.OTHER];
         }
     }
 }
