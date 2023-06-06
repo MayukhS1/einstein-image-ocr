@@ -1,4 +1,4 @@
-import { LightningElement } from 'lwc';
+import { LightningElement, api, track } from 'lwc';
 import generateData from './generateData';
 import images from '@salesforce/resourceUrl/images';
 
@@ -17,5 +17,9 @@ export default class ShowData extends LightningElement {
     connectedCallback() {
         const data = generateData({ amountOfRecords: 5 });
         this.data = data;
+    }
+
+    @api handleSearch(searchJson){
+        console.log('searchJson in showdata==>'+JSON.stringify(searchJson));
     }
 }

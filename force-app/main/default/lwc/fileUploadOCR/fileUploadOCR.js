@@ -3,7 +3,7 @@ import images from '@salesforce/resourceUrl/images';
 import getImageBase60 from '@salesforce/apex/FileUploadController.getImageBase60';
 import initiateOCRScan from '@salesforce/apex/FileUploadController.initiateOCRScan';
 
-export default class FileUploadExample extends LightningElement {
+export default class fileUploadOCR extends LightningElement {
     @api
     myRecordId;
 
@@ -47,6 +47,7 @@ export default class FileUploadExample extends LightningElement {
                     .then(result => {
                         console.log('result==>'+JSON.stringify(result));
                         this.uploadedImageBase64 = result;
+                        this.firstColumnImageUrl = 'data:image/png;base64, '+result;
                     })
                     .catch(error => {
                         console.log('error==>'+JSON.stringify(error));
@@ -59,7 +60,6 @@ export default class FileUploadExample extends LightningElement {
     }
     handleScanImageClick(event) {
         if (this.uploadedImageBase64) {
-            this.firstColumnImageUrl = 'data:image/png;base64, '+this.uploadedImageBase64;
             /* temporary comment out*/
             initiateOCRScan({base60Image: this.uploadedImageBase64})
             .then(result => {
@@ -71,6 +71,16 @@ export default class FileUploadExample extends LightningElement {
                 console.log('error==>'+JSON.stringify(error));
             });
             /**/
+        }else{
+            alert('Please upload the image first');
+        }
+    }
+
+    handleSearch(event) {
+        if(this.scannedResult){
+            this.dispatchEvent(new CustomEvent('buttonpress', {detail: {key: 'search', value: this.scannedResult}}));
+        }else{
+            alert('Please scan the image first');
         }
     }
 }
