@@ -1,18 +1,28 @@
-# Salesforce DX Project: Next Steps
+# Salesforce Einstein Vision API
+## Introduction
+This is an AI-Powered SFDC app, that can search record from images using Einstein Vision OCR model. The app is designed to optimize record searching and retrieval of diverse record type with minimal effort. The app is built on top of Salesforce Einstein Vision API and Salesforce Lightning Web Component.
 
-Now that you’ve created a Salesforce DX project, what’s next? Here are some documentation resources to get you started.
+## Features
+- Search record from uploaded images
+- Create record from OCR Data scanned uploaded images
+- Identify Data Tag (e.g. Name, Address, Phone Number, etc.) from uploaded images
 
-## How Do You Plan to Deploy Your Changes?
+## Installation
+### Prerequisites
+- Salesforce Developer Edition
+- Salesforce Einstein Vision API
 
-Do you want to deploy a set of changes, or create a self-contained application? Choose a [development model](https://developer.salesforce.com/tools/vscode/en/user-guide/development-models).
+### Steps
+1. Clone the repository
+2. Deploy the code to your Salesforce Developer Edition
+3. Create a Lightning App Page
+4. Add the Lightning Web Component to the Lightning App Page
+5. Add the Lightning App Page to your Salesforce App
 
-## Configure Your Salesforce DX Project
-
-The `sfdx-project.json` file contains useful configuration information for your project. See [Salesforce DX Project Configuration](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_config.htm) in the _Salesforce DX Developer Guide_ for details about this file.
-
-## Read All About It
-
-- [Salesforce Extensions Documentation](https://developer.salesforce.com/tools/vscode/)
-- [Salesforce CLI Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
-- [Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_intro.htm)
-- [Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference.htm)
+## Usage
+### Search Record
+1. Upload an image
+2. Click the "SCAN" button
+3. Click the "SEARCH Result" button to view data from org
+4. Click the "Create Record" button to create new record
+5. Click the "Clear" button to clear the image
