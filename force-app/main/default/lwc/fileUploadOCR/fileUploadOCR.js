@@ -1,7 +1,12 @@
-import { LightningElement, api, track } from 'lwc';
+import { LightningElement, api } from 'lwc';
 import images from '@salesforce/resourceUrl/images';
 import getImageBase60 from '@salesforce/apex/FileUploadController.getImageBase60';
 import initiateOCRScan from '@salesforce/apex/FileUploadController.initiateOCRScan';
+import { createRecord } from 'lightning/uiRecordApi';
+import { ShowToastEvent } from 'lightning/platformShowToastEvent';
+import ACCOUNT_OBJECT from '@salesforce/schema/Account';
+import NAME_FIELD from '@salesforce/schema/Account.Name';
+import PHONE_FIELD from '@salesforce/schema/Account.Phone';
 
 export default class FileUploadExample extends LightningElement {
     @api
@@ -14,15 +19,15 @@ export default class FileUploadExample extends LightningElement {
     //image for OCR
     uploadedImageBase64;
     ocrResult='';
-    showCardDetails = false;
+    showCardDetails = true;
 
     //scanned_result
-    @track scannedResult = {
-        "PERSON": ["John Doe"],
-        "PHONE": ["1234567890","0987654321"],
-        "EMAIL": ["test@test.com"],
-        "ORG": ["Salesforce.com, Inc."],
-        "OTHER": ["San Francisco, CA 94105","United States of America","https://www.salesforce.com"]
+    scannedResult = {
+        "name": ["John Doe"],
+        "phone": ["1234567890","0987654321"],
+        "email": ["test@test.com"],
+        "company": ["Salesforce.com, Inc."],
+        "other": ["San Francisco, CA 94105","United States of America","https://www.salesforce.com"]
     };
 
     get acceptedFormats() {
@@ -60,17 +65,48 @@ export default class FileUploadExample extends LightningElement {
     handleScanImageClick(event) {
         if (this.uploadedImageBase64) {
             this.firstColumnImageUrl = 'data:image/png;base64, '+this.uploadedImageBase64;
-            /* temporary comment out*/
+            /* temporary comment out
             initiateOCRScan({base60Image: this.uploadedImageBase64})
             .then(result => {
                 console.log('result==>'+result);
-                this.scannedResult = JSON.parse(result);
-                this.showCardDetails = true;
+                this.ocrResult = result;
             })
             .catch(error => {
                 console.log('error==>'+JSON.stringify(error));
             });
-            /**/
+            */
         }
+    }
+    handleCreate(event){
+        const fields = {};
+        console.log('scannedresult==>'+JSON.stringify(this.scannedResult));
+        if(this.scannedResult.name){
+            fields[NAME_FIELD.fieldApiName] = this.scannedResult.name.join(', ');
+        }
+        if(this.scannedResult.phone){
+            fields[PHONE_FIELD.fieldApiName] = this.scannedResult.phone.join(', ');
+        }
+        const recordInput = { apiName: ACCOUNT_OBJECT.objectApiName, fields };
+        createRecord(recordInput)
+            .then(account => {
+                this.accountId = account.id;
+                this.dispatchEvent(
+                    new ShowToastEvent({
+                        title: 'Success',
+                        message: 'Account created',
+                        variant: 'success',
+                    }),
+                );
+            })
+            .catch(error => {
+                this.dispatchEvent(
+                    new ShowToastEvent({
+                        title: 'Error creating record',
+                        message: error.body.message,
+                        variant: 'error',
+                    }),
+                );
+            });
+    
     }
 }
