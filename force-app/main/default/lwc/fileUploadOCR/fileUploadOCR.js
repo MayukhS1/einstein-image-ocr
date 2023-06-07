@@ -8,7 +8,7 @@ import ACCOUNT_OBJECT from '@salesforce/schema/Account';
 import NAME_FIELD from '@salesforce/schema/Account.Name';
 import PHONE_FIELD from '@salesforce/schema/Account.Phone';
 
-export default class FileUploadExample extends LightningElement {
+export default class fileUploadOCR extends LightningElement {
     @api
     myRecordId;
 
@@ -52,6 +52,7 @@ export default class FileUploadExample extends LightningElement {
                     .then(result => {
                         console.log('result==>'+JSON.stringify(result));
                         this.uploadedImageBase64 = result;
+                        this.firstColumnImageUrl = 'data:image/png;base64, '+result;
                     })
                     .catch(error => {
                         console.log('error==>'+JSON.stringify(error));
@@ -64,8 +65,7 @@ export default class FileUploadExample extends LightningElement {
     }
     handleScanImageClick(event) {
         if (this.uploadedImageBase64) {
-            this.firstColumnImageUrl = 'data:image/png;base64, '+this.uploadedImageBase64;
-            /* temporary comment out
+            /* temporary comment out*/
             initiateOCRScan({base60Image: this.uploadedImageBase64})
             .then(result => {
                 console.log('result==>'+result);
@@ -74,7 +74,17 @@ export default class FileUploadExample extends LightningElement {
             .catch(error => {
                 console.log('error==>'+JSON.stringify(error));
             });
-            */
+            /**/
+        }else{
+            alert('Please upload the image first');
+        }
+    }
+
+    handleSearch(event) {
+        if(this.scannedResult){
+            this.dispatchEvent(new CustomEvent('buttonpress', {detail: {key: 'search', value: this.scannedResult}}));
+        }else{
+            alert('Please scan the image first');
         }
     }
     handleCreate(event){
