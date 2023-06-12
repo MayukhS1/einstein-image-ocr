@@ -7,7 +7,8 @@ export default class OCRParent extends LightningElement {
             console.log('this.searchJson==>'+JSON.stringify(this.searchJson));
             this.template.querySelector('c-show-Data').handleSearch(this.searchJson);
         }else if(event.detail.key==='create'){
-
+            this.searchJson=event.detail.value;
+            this.template.querySelector('c-show-data').handleCreate(this.searchJson);
         }else if(event.detail.key==='clear'){
 
         }

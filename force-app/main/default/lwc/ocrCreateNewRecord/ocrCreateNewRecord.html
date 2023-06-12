@@ -1,0 +1,46 @@
+<template>
+    <div class="slds-align_absolute-center">
+        <div class="slds-p-bottom_large slds-p-left_large" style="width:500px">
+            <template lwc:if={showSpinner}>
+                <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+            </template>
+            <lightning-combobox name="objectType" label="Select Object Type" value={objectApiName}
+                placeholder="Select Object Type" options={objectOptions} onchange={handleChange}>
+            </lightning-combobox>
+            <template lwc:if={isAccount}>
+                <lightning-record-edit-form object-api-name="Account" onsubmit={handleAccountSubmit} onsuccess={handleSuccess}>
+                    <lightning-messages></lightning-messages>
+                    <lightning-input-field field-name="Name" value={accountData.Name}> </lightning-input-field>
+                    <lightning-input-field field-name="Phone" value={accountData.Phone}> </lightning-input-field>
+                    <lightning-input-field field-name="BillingAddress"></lightning-input-field>
+                    <lightning-button type="submit" name="submit" label="Create Account">
+                    </lightning-button>
+                </lightning-record-edit-form>
+            </template>
+            <template lwc:if={isContact}>
+                <lightning-record-edit-form object-api-name="Contact" onsubmit={handleContactSubmit} onsuccess={handleSuccess}>
+                    <lightning-messages></lightning-messages>
+                    <lightning-input-field field-name="FirstName" value={contactData.FirstName}> </lightning-input-field>
+                    <lightning-input-field field-name="LastName" value={contactData.LastName}> </lightning-input-field>
+                    <lightning-input-field field-name="Phone" value={contactData.Phone}> </lightning-input-field>
+                    <lightning-input-field field-name="Email" value={contactData.Email}> </lightning-input-field>
+                    <lightning-input-field field-name="AccountId"> </lightning-input-field>
+                    <lightning-button type="submit" name="submit" label="Create Contact">
+                    </lightning-button>
+                </lightning-record-edit-form>
+            </template>
+            <template lwc:if={isLead}>
+                <lightning-record-edit-form object-api-name="Lead" onsubmit={handleLeadSubmit} onsuccess={handleSuccess}>
+                    <lightning-messages></lightning-messages>
+                    <lightning-input-field field-name="FirstName"> </lightning-input-field>
+                    <lightning-input-field field-name="LastName"> </lightning-input-field>
+                    <lightning-input-field field-name="Phone"> </lightning-input-field>
+                    <lightning-input-field field-name="Email"> </lightning-input-field>
+                    <lightning-input-field field-name="Company"> </lightning-input-field>
+                    <lightning-button type="submit" name="submit" label="Create Lead">
+                    </lightning-button>
+                </lightning-record-edit-form>
+            </template>
+        </div>
+    </div>
+</template>

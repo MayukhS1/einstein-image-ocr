@@ -20,9 +20,9 @@
     </header>
   </div>
   <div class="slds-card__body">
-    <lightning-datatable key-field="id" data={columnData} columns={columns}></lightning-datatable>
+    <lightning-datatable key-field="id" data={accountColumnData} columns={accountColumns}></lightning-datatable>
   </div>
-  <!--div class="slds-card__header slds-grid">
+  <div class="slds-card__header slds-grid">
     <header class="slds-media slds-media_center slds-has-flexi-truncate">
       <div class="slds-media__figure">
         <span class="slds-icon_container slds-icon-standard-contact" title="contact">
@@ -36,15 +36,18 @@
       </div>
       <div class="slds-media__body">
         <h2 class="slds-card__header-title">
-            <span>Contacts</span>
+          <span>Contacts</span>
         </h2>
       </div>
     </header>
   </div>
   <div class="slds-card__body">
-    <lightning-datatable key-field="id" data={data} columns={columns}></lightning-datatable>
-  </div-->
+    <lightning-datatable key-field="id" data={contactColumnData} columns={contactColumns}></lightning-datatable>
+  </div>
 </article>
+<lightning-card lwc:elseif={createRecord}>
+  <c-ocr-create-new-record></c-ocr-create-new-record>
+</lightning-card>
 <lightning-card lwc:else>
   <br></br>
   <div class="slds-text-longform">

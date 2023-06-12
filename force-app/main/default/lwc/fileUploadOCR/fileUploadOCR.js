@@ -98,38 +98,43 @@ export default class fileUploadOCR extends LightningElement {
         }
     }
     handleCreate(event){
-        const fields = {};
-        console.log('scannedresult==>'+JSON.stringify(this.scannedResult));
-        if(this.scannedResult.hasOwnProperty('PERSON') ){
-            fields[NAME_FIELD.fieldApiName] = this.scannedResult.PERSON.join(', ');
+        if(this.scannedResult){
+            this.dispatchEvent(new CustomEvent('buttonpress', {detail: {key: 'create', value: this.scannedResult}}));
+        }else{
+            alert('Please scan the image first');
         }
-        if(this.scannedResult.hasOwnProperty('PHONE')){
-            fields[PHONE_FIELD.fieldApiName] = this.scannedResult.PHONE.join(', ');
-        }
-        //if(this.scannedResult.hasOwnProperty('EMAIL')){
-       //     fields[EMAIL_FIELD.fieldApiName] = this.scannedResult.EMAIL.join(', ');
-        //}
-        const recordInput = { apiName: ACCOUNT_OBJECT.objectApiName, fields };
-        createRecord(recordInput)
-            .then(account => {
-                this.accountId = account.id;
-                this.dispatchEvent(
-                    new ShowToastEvent({
-                        title: 'Success',
-                        message: 'Account created',
-                        variant: 'success',
-                    }),
-                );
-            })
-            .catch(error => {
-                this.dispatchEvent(
-                    new ShowToastEvent({
-                        title: 'Error creating record',
-                        message: error.body.message,
-                        variant: 'error',
-                    }),
-                );
-            });
-    
+    //     const fields = {};
+    //     console.log('scannedresult==>'+JSON.stringify(this.scannedResult));
+    //     if(this.scannedResult.hasOwnProperty('PERSON') ){
+    //         fields[NAME_FIELD.fieldApiName] = this.scannedResult.PERSON.join(', ');
+    //     }
+    //     if(this.scannedResult.hasOwnProperty('PHONE')){
+    //         fields[PHONE_FIELD.fieldApiName] = this.scannedResult.PHONE.join(', ');
+    //     }
+    //     //if(this.scannedResult.hasOwnProperty('EMAIL')){
+    //    //     fields[EMAIL_FIELD.fieldApiName] = this.scannedResult.EMAIL.join(', ');
+    //     //}
+    //     const recordInput = { apiName: ACCOUNT_OBJECT.objectApiName, fields };
+    //     createRecord(recordInput)
+    //         .then(account => {
+    //             this.accountId = account.id;
+    //             this.dispatchEvent(
+    //                 new ShowToastEvent({
+    //                     title: 'Success',
+    //                     message: 'Account created',
+    //                     variant: 'success',
+    //                 }),
+    //             );
+    //         })
+    //         .catch(error => {
+    //             this.dispatchEvent(
+    //                 new ShowToastEvent({
+    //                     title: 'Error creating record',
+    //                     message: error.body.message,
+    //                     variant: 'error',
+    //                 }),
+    //             );
+    //         });
+        
     }
 }
