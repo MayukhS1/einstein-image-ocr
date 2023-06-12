@@ -7,6 +7,7 @@ import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import ACCOUNT_OBJECT from '@salesforce/schema/Account';
 import NAME_FIELD from '@salesforce/schema/Account.Name';
 import PHONE_FIELD from '@salesforce/schema/Account.Phone';
+//import EMAIL_FIELD from '@salesforce/schema/Account.Email__c';
 
 export default class fileUploadOCR extends LightningElement {
     @api
@@ -99,12 +100,15 @@ export default class fileUploadOCR extends LightningElement {
     handleCreate(event){
         const fields = {};
         console.log('scannedresult==>'+JSON.stringify(this.scannedResult));
-        if(this.scannedResult.name){
-            fields[NAME_FIELD.fieldApiName] = this.scannedResult.name.join(', ');
+        if(this.scannedResult.hasOwnProperty('PERSON') ){
+            fields[NAME_FIELD.fieldApiName] = this.scannedResult.PERSON.join(', ');
         }
-        if(this.scannedResult.phone){
-            fields[PHONE_FIELD.fieldApiName] = this.scannedResult.phone.join(', ');
+        if(this.scannedResult.hasOwnProperty('PHONE')){
+            fields[PHONE_FIELD.fieldApiName] = this.scannedResult.PHONE.join(', ');
         }
+        //if(this.scannedResult.hasOwnProperty('EMAIL')){
+       //     fields[EMAIL_FIELD.fieldApiName] = this.scannedResult.EMAIL.join(', ');
+        //}
         const recordInput = { apiName: ACCOUNT_OBJECT.objectApiName, fields };
         createRecord(recordInput)
             .then(account => {
