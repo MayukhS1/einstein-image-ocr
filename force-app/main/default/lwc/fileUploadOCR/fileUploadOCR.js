@@ -1,4 +1,4 @@
-import { LightningElement, api } from 'lwc';
+import { LightningElement, api, track } from 'lwc';
 import images from '@salesforce/resourceUrl/images';
 import getImageBase60 from '@salesforce/apex/FileUploadController.getImageBase60';
 import initiateOCRScan from '@salesforce/apex/FileUploadController.initiateOCRScan';
@@ -19,16 +19,19 @@ export default class fileUploadOCR extends LightningElement {
     //image for OCR
     uploadedImageBase64;
     ocrResult='';
-    showCardDetails = true;
+    showCardDetails = false;
 
     //scanned_result
-    scannedResult = {
-        "name": ["John Doe"],
-        "phone": ["1234567890","0987654321"],
-        "email": ["test@test.com"],
-        "company": ["Salesforce.com, Inc."],
-        "other": ["San Francisco, CA 94105","United States of America","https://www.salesforce.com"]
+    @track scannedResult = {
+        "PERSON": ["John Doe"],
+        "PHONE": ["1234567890","0987654321"],
+        "EMAIL": ["test@test.com"],
+        "ORG": ["Salesforce.com, Inc."],
+        "OTHER": ["San Francisco, CA 94105","United States of America","https://www.salesforce.com"]
     };
+
+    //utility
+    showSpinner = false;
 
     get acceptedFormats() {
         return ['.jpg', '.png', '.jpeg'];
@@ -63,16 +66,22 @@ export default class fileUploadOCR extends LightningElement {
             console.log('error!!!!'+error);
         }
     }
+    
     handleScanImageClick(event) {
         if (this.uploadedImageBase64) {
             /* temporary comment out*/
+            this.showSpinner = true;
             initiateOCRScan({base60Image: this.uploadedImageBase64})
             .then(result => {
                 console.log('result==>'+result);
-                this.ocrResult = result;
+                this.scannedResult = JSON.parse(result);
+                this.showCardDetails = true;
+                this.showSpinner = false;
             })
             .catch(error => {
                 console.log('error==>'+JSON.stringify(error));
+                this.showSpinner = false;
+                alert('OCR scan failed');
             });
             /**/
         }else{

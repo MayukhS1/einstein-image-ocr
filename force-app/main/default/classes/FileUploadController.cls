@@ -13,7 +13,7 @@ public with sharing class FileUploadController {
         if(String.isBlank(base60Image)){
             throw new Custom_FileUploadException('base60Image content is missing');
         }
-        if(false){
+        if(true){
             String reponse = OCRUtility.initiateOCRScan(base60Image);
             EinsteinOCRPredictionResponseWrapper einsteinOCRPredictionResponseWrapper = OCRUtility.parseResponse(reponse);
             OCRDetailsWrapper ocrDetails = new OCRDetailsWrapper(einsteinOCRPredictionResponseWrapper);

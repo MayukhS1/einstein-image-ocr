@@ -54,6 +54,9 @@
 							<div class="slds-text-body_regular" lwc:if={showCardDetails}>
 								<c-scanned-text-data scannedresult={scannedResult}></c-scanned-text-data>
 							</div>
+							<div lwc:elseif={showSpinner}>
+								<lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+							</div>
 							<div class="image-parent" lwc:else>
 								<!-- OCR Result Component will be here -->
 								<div class="image-bottom-corner">
